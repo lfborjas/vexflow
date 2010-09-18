@@ -53,10 +53,11 @@
 
                 if(use_editor){
                     editor.addClass("editor").val(vextab.code);   
+                    vextab.editor_error = $("<div class='editor-error'></div>");
                     if(settings.prepend_errors){
-                        editor.before("<div class='editor-error'></div>");
+                        editor.before(vextab.editor_error);
                     }else{
-                        editor.after("<div class='editor-error'></div>");
+                        editor.after(vextab.editor_error);
                     }
 
                     editor.keyup(function(){
