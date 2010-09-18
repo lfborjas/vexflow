@@ -29,9 +29,6 @@
                 /*Variation of the [original code](http://github.com/0xfe/vexflow/blob/master/tabdiv/tabdiv.js)*/
 
                 vextab = new Vex.Flow.TabDiv();
-                $this.attr("width", settings.width);
-                $this.attr("height", settings.height);
-                $this.attr("scale", settings.scale);
                 vextab.code = $this.text();
                 //ok, we got the original code, empty the div
                 $this.empty();
@@ -48,7 +45,7 @@
                     vextab.renderer = new Vex.Flow.Renderer(vextab.canvas[0],
                         Vex.Flow.Renderer.Backends.RAPHAEL);
                 }
-                
+                console.log(settings.width); 
                 vextab.renderer.resize(settings.width, settings.height);
                 vextab.ctx = vextab.renderer.getContext();
                 vextab.ctx.scale(settings.scale, settings.scale);
