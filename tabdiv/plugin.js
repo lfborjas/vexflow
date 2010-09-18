@@ -32,7 +32,9 @@
                 vextab.code = $this.text();
                 //ok, we got the original code, empty the div
                 $this.empty();
-
+                vextab.width = settings.width;
+                vextab.height = settings.height;
+                vextab.scale = settings.scale;
                 //set the rendering surface
                 if(typeof(Raphael) == "undefined"){
                     vextab.canvas = $('<canvas></canvas>').addClass("vex-canvas");
@@ -45,7 +47,6 @@
                     vextab.renderer = new Vex.Flow.Renderer(vextab.canvas[0],
                         Vex.Flow.Renderer.Backends.RAPHAEL);
                 }
-                console.log(settings.width); 
                 vextab.renderer.resize(settings.width, settings.height);
                 vextab.ctx = vextab.renderer.getContext();
                 vextab.ctx.scale(settings.scale, settings.scale);
