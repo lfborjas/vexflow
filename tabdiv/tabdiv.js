@@ -3,8 +3,18 @@
  * Copyright Mohit Muthanna 2010 <mohit@muthanna.com>
  */
 
-Vex.Flow.TabDiv = function(sel) {
-  if (arguments.length > 0) this.init(sel);
+
+Vex.Flow.TabDiv= function() {
+
+  this.code = "";
+
+  // Get tabdiv properties
+  this.width = ""; 
+  this.height = ""; 
+  this.scale = ""; 
+  this.canvas = null;
+  this.renderer = null;
+
 }
 
 Vex.Flow.TabDiv.SEL = ".vex-tabdiv";
@@ -12,70 +22,6 @@ Vex.Flow.TabDiv.ERROR_NOCANVAS =
   "<b>This browser does not support HTML5 Canvas</b><br/>" +
   "Please use a modern browser such as <a href='http://google.com/chrome'>" +
   "Google Chrome</a> or <a href='http://firefox.com'>Firefox</a>.";
-
-Vex.Flow.TabDiv.prototype.init = function(sel) {
-  this.sel = sel;
-
-  // Grab code and clear tabdiv
-  this.code = $(sel).text();
-  $(sel).empty();
-
-  // Get tabdiv properties
-  this.width = $(sel).attr("width") || 400;
-  this.height = $(sel).attr("height") || 200;
-  this.scale = $(sel).attr("scale") || 1.0;
-
-  // If the Raphael.js sources are included, then use Raphael, else
-  // resort to HTML5 Canvas.
-  if (typeof (Raphael) == "undefined") {
-    this.canvas = $('<canvas></canvas>').addClass("vex-canvas");
-    $(sel).append(this.canvas);
-    this.renderer = new Vex.Flow.Renderer(this.canvas[0],
-        Vex.Flow.Renderer.Backends.CANVAS);
-  } else {
-    this.canvas = $('<div></div>').addClass("vex-canvas");
-    $(sel).append(this.canvas);
-    this.renderer = new Vex.Flow.Renderer(this.canvas[0],
-        Vex.Flow.Renderer.Backends.RAPHAEL);
-  }
-
-  this.renderer.resize(this.width, this.height);
-  this.ctx = this.renderer.getContext();
-  this.ctx.scale(this.scale, this.scale);
-
-  // Grab editor properties
-  this.editor = $(sel).attr("editor") || "";
-  this.editor_width= $(sel).attr("editor_width") || this.width;
-  this.editor_height= $(sel).attr("editor_height") || 200;
-
-  var that = this;
-  if (this.editor == "true") {
-    this.text_area = $('<textarea></textarea>').addClass("editor").
-      val(this.code);
-    this.editor_error = $('<div></div>').addClass("editor-error");
-    $(sel).append($('<p/>')).append(this.editor_error);
-    $(sel).append($('<p/>')).append(this.text_area);
-    this.text_area.width(this.editor_width);
-    this.text_area.height(this.editor_height);
-    this.text_area.keyup(function() {
-        if (that.timeoutID) window.clearTimeout(that.timeoutID);
-        that.timeoutID =
-          window.setTimeout(function() {
-            // Draw only if code changed
-            if (that.code != that.text_area.val()) {
-              that.code = that.text_area.val();
-              that.redraw()
-            }
-          }, 100);
-    });
-  }
-
-  // Initialize parser.
-  this.parser = new Vex.Flow.VexTab();
-  this.message = "vexflow.com";
-  if (!this.message) this.extra_height = 10; else this.extra_height = 20;
-  this.redraw();
-}
 
 Vex.Flow.TabDiv.prototype.redraw = function() {
   var that = this;
@@ -186,11 +132,12 @@ Vex.Flow.TabDiv.prototype.draw = function() {
   return this;
 }
 
+/*
 // Automatic initialization.
 Vex.Flow.TabDiv.start = function() {
   $(Vex.Flow.TabDiv.SEL).each(function(index) {
       new Vex.Flow.TabDiv(this);
   });
 }
-
-$(function() {if (Vex.Flow.TabDiv.SEL) { Vex.Flow.TabDiv.start() }});
+*/
+//$(function() {if (Vex.Flow.TabDiv.SEL) { Vex.Flow.TabDiv.start() }});
