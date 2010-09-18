@@ -3,11 +3,6 @@
  * Copyright Mohit Muthanna 2010 <mohit@muthanna.com>
  */
 
-Vex.Flow.TabDiv.SEL = ".vex-tabdiv";
-Vex.Flow.TabDiv.ERROR_NOCANVAS =
-  "<b>This browser does not support HTML5 Canvas</b><br/>" +
-  "Please use a modern browser such as <a href='http://google.com/chrome'>" +
-  "Google Chrome</a> or <a href='http://firefox.com'>Firefox</a>.";
 
 Vex.Flow.TabDiv= function() {
 
@@ -21,6 +16,12 @@ Vex.Flow.TabDiv= function() {
   this.renderer = null;
 
 }
+
+Vex.Flow.TabDiv.SEL = ".vex-tabdiv";
+Vex.Flow.TabDiv.ERROR_NOCANVAS =
+  "<b>This browser does not support HTML5 Canvas</b><br/>" +
+  "Please use a modern browser such as <a href='http://google.com/chrome'>" +
+  "Google Chrome</a> or <a href='http://firefox.com'>Firefox</a>.";
 
 Vex.Flow.TabDiv.prototype.redraw = function() {
   var that = this;
