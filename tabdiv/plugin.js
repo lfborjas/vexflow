@@ -10,11 +10,11 @@
         init: function(options){            
             return this.each(function () {
                 var $this = $(this);
-                var settings = {'editor': null, 
-                                'prepend_errors': true,
-                                'width': 400,
-                                'height': 200,
-                                'scale': 1.0
+                var settings = {editor: null, 
+                                prepend_errors: true,
+                                width: 400,
+                                height: 200,
+                                scale: 1.0
                                };
                 if(options){
                     $.extend(settings, options);
