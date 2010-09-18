@@ -10,7 +10,8 @@ from vexflow_scons import *
 tabdiv_sources = [
     "header.js",
     "#vextab/vextab.js",
-    "tabdiv.js"
+    "tabdiv.js",
+    "plugin.js",
     ]
 
 Import("dbg opt")
