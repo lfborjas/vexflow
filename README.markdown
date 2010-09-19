@@ -1,6 +1,6 @@
 #VexFlow: A JavaScript library for rendering music notation and guitar tablature.
 
-This fork includes a [jquery plugin](http://docs.jquery.com/Plugins/Authoring) for the super awesome javascript library for html5 music rendering [0xfe](http://0xfe.blogspot.com).
+This fork includes a [jquery plugin](http://docs.jquery.com/Plugins/Authoring) for the super awesome javascript library for html5 music rendering by [0xfe](http://0xfe.blogspot.com).
 
 This one difers a little from the one presented in the [original site](http://www.vexflow.com), namely, the loading mechanism, so don't even expect to work in pages that implement it the other way (though the change is easy enough).
 
